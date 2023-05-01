@@ -1,7 +1,7 @@
 # CaptainOfCheats-Zh Mod
 Captain of Industry 的作弊Mod，这是[CaptainOfCheats](https://github.com/altmank/CaptainOfCheats "CaptainOfCheats")的中文重置版本。它有一个作弊菜单，可以通过 F8 键或单击底部工具栏上最右侧的船轮图标来访问。
 
-![](https://raw.githubusercontent.com/louismax/img/master/PicGo/20230501221816.png)
+[![](https://raw.githubusercontent.com/louismax/img/master/PicGo/20230501221816.png)](https://raw.githubusercontent.com/louismax/img/master/PicGo/20230501221816.png)
 
 ##功能
 - 将指定数量的任何可运输产品运到您的造船厂
