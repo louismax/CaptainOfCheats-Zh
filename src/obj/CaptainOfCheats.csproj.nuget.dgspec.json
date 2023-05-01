@@ -1,0 +1,55 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\github.com\\louismax\\CaptainOfCheats-Zh\\src\\CaptainOfCheats.csproj": {}
+  },
+  "projects": {
+    "E:\\github.com\\louismax\\CaptainOfCheats-Zh\\src\\CaptainOfCheats.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\github.com\\louismax\\CaptainOfCheats-Zh\\src\\CaptainOfCheats.csproj",
+        "projectName": "CaptainOfCheats",
+        "projectPath": "E:\\github.com\\louismax\\CaptainOfCheats-Zh\\src\\CaptainOfCheats.csproj",
+        "packagesPath": "C:\\Users\\Louis\\.nuget\\packages\\",
+        "outputPath": "E:\\github.com\\louismax\\CaptainOfCheats-Zh\\src\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Louis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net46"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net46": {
+            "targetAlias": "net46",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net46": {
+          "targetAlias": "net46",
+          "dependencies": {
+            "GitVersion.MsBuild": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.10.3, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

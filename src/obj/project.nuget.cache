@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "RvMiNiHebLm1JBhNX18NLCGpt8HPRkDY3BejQnguZ3yO/HMFrHZrjxfYz/gosv+/bNx8SAqoSw7+PFSziL9g0g==",
+  "success": true,
+  "projectFilePath": "E:\\github.com\\louismax\\CaptainOfCheats-Zh\\src\\CaptainOfCheats.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Louis\\.nuget\\packages\\gitversion.msbuild\\5.10.3\\gitversion.msbuild.5.10.3.nupkg.sha512"
+  ],
+  "logs": []
+}

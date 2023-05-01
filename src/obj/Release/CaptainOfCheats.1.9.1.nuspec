@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>CaptainOfCheats</id>
+    <version>1.9.1</version>
+    <authors>CaptainOfCheats</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETFramework4.6" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" targetFramework=".NETFramework4.6" />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+    <file src="E:\github.com\altmank\CaptainOfCheats\src\bin\Release\net46\CaptainOfCheats.dll" target="lib\net46\CaptainOfCheats.dll" />
+  </files>
+</package>
