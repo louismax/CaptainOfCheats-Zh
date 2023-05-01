@@ -1,6 +1,8 @@
 # CaptainOfCheats-Zh Mod
 Captain of Industry 的作弊Mod，这是[CaptainOfCheats](https://github.com/altmank/CaptainOfCheats "CaptainOfCheats")的中文重置版本。它有一个作弊菜单，可以通过 F8 键或单击底部工具栏上最右侧的船轮图标来访问。
 
+![](https://raw.githubusercontent.com/louismax/img/master/PicGo/20230501221816.png)
+
 ##功能
 - 将指定数量的任何可运输产品运到您的造船厂
 - 使用存储神模式工具（在您的工具菜单中）将任何存储建筑变成产品的无限提供者或删除者。警告：使用上帝模式从无到有创造产品，并打破游戏内部跟踪回收的方式。因此，如果您的生产链使用上帝模式，您可能会发现回收不会产生您期望的输出。
@@ -21,14 +23,15 @@ Captain of Industry 的作弊Mod，这是[CaptainOfCheats](https://github.com/al
 - 补充地下水/石油储备
 - 通过采矿/倾倒指定改变地形
 - 树木移除
--
+
 ##安装
 从 GitHub Release 下载 mod zip 文件（它将被命名为“CaptainOfCheats-Zh_vX.XXzip，其中 X 被发行版本替换”）。如果您的游戏版本不存在发行版，使用另一个版本可能无法正确加载。
-将 zip 文件解压缩到%USERPROFILE%\Documents\Captain of Industry\Mods目录。
+将 zip 文件解压缩到%USERPROFILE%\Documents\Captain of Industry\Mods目录，如果不存在Mods目录需要手动新建。
 提取的 zip 应该会产生类似%USERPROFILE%\Documents\Captain of Industry\Mods\CaptainOfCheats\CaptainOfCheats.dll. 如果不是出于任何原因，请将您的目录结构修复为如下所示。
 如果您之前没有在游戏中使用过此模组，则必须重新开始游戏才能正确初始化。希望这在未来会有所改变，但这是 COI 中模组的当前状态。
 在“杂项”选项卡>“改装”切换按钮下的游戏设置中启用改装
-免责声明
+
+##免责声明
 该游戏处于抢先体验阶段，并且经常进行修补。补丁已经并且可能会继续破坏模组，因此请检查您正在使用的版本中提到的游戏版本。补丁的更新将在时间允许的情况下创建。
 如果您想在这些补丁期间保持游戏正常运行，请禁用自动游戏更新并仅在发布新模组版本时进行更新。
 此外，我们不保证这不会给您的游戏带来问题。在您的游戏中使用此模组，您承担所有风险。
