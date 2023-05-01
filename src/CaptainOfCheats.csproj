@@ -1,0 +1,92 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net46</TargetFramework>
+		<Configurations>Release</Configurations>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>portable</DebugType>
+		<DefineConstants />
+		<Optimize>true</Optimize>
+		<OutputPath>bin\Release\</OutputPath>		
+	</PropertyGroup>
+	<PropertyGroup>
+	</PropertyGroup>
+	<ItemGroup>
+		<Reference Include="Mafi">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\Mafi.dll</HintPath>
+		</Reference>
+		<Reference Include="Mafi.Base">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\Mafi.Base.dll</HintPath>
+		</Reference>
+		<Reference Include="Mafi.Core">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\Mafi.Core.dll</HintPath>
+		</Reference>
+		<Reference Include="Mafi.Unity">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\Mafi.Unity.dll</HintPath>
+		</Reference>
+		<Reference Include="System" />
+		<Reference Include="Unity.VectorGraphics">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\Unity.VectorGraphics.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\UnityEngine.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AnimationModule">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AssetBundleModule">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AudioModule">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ImageConversionModule">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.InputLegacyModule">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ParticleSystemModule">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.PhysicsModule">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ScreenCaptureModule">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TerrainModule">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\UnityEngine.TerrainModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TerrainPhysicsModule">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TextRenderingModule">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UI">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\UnityEngine.UI.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UIElementsModule">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UIModule">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.VideoModule">
+		  <HintPath>H:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed\UnityEngine.VideoModule.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="GitVersion.MsBuild" Version="5.10.3">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	</ItemGroup>
+</Project>
