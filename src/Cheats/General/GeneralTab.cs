@@ -11,6 +11,7 @@ using Mafi.Unity.InputControl;
 using Mafi.Unity.UiFramework;
 using Mafi.Unity.UiFramework.Components;
 using Mafi.Unity.UiFramework.Components.Tabs;
+using Mafi.Unity.UserInterface.Components;
 using UnityEngine;
 
 namespace CaptainOfCheats.Cheats.General
@@ -68,7 +69,7 @@ namespace CaptainOfCheats.Cheats.General
 
         private void RefreshValues()
         {
-            foreach (var kvp in _switchBtns) kvp.Key.SetState(kvp.Value());
+            foreach (var kvp in _switchBtns) kvp.Key.SetIsOn(kvp.Value());
         }
 
         protected override void BuildUi()
@@ -109,7 +110,7 @@ namespace CaptainOfCheats.Cheats.General
                 toggleVal => _diseaseCheatProvider.ToggleDisease(toggleVal),
                 () => !_diseaseCheatProvider.IsDiseaseDisabled);
             diseaseToggle.AppendTo(firstRowContainer, new Vector2(diseaseToggle.GetWidth(), 25), ContainerPosition.LeftOrTop);
-            diseaseToggle.PutToRightOf(instantModeToggle, diseaseToggle.GetWidth(), Offset.Right(-280));
+            diseaseToggle.PutToRightOf(instantModeToggle, diseaseToggle.GetWidth(), Offset.Right(-225));
 
             
             Builder.AddSectionTitle(tabContainer, new LocStrFormatted("定居人口"), new LocStrFormatted("使用递增按钮在您的人口中添加或删除人员。"));
@@ -128,15 +129,15 @@ namespace CaptainOfCheats.Cheats.General
                 .SetSizeMode(StackContainer.SizeMode.StaticDirectionAligned)
                 .SetItemSpacing(10f)
                 .PutToLeftOf(researchPanel, 0.0f, Offset.Left(10f));
-
-            var unlockCurrentResearchButton = Builder.NewBtn("button")
+            
+            var unlockCurrentResearchButton = Builder.NewBtnGeneral("button")
                 .SetButtonStyle(Style.Global.PrimaryBtn)
                 .SetText(new LocStrFormatted("完成当前研究"))
                 .AddToolTip("开始研究，然后使用这个命令瞬间完成。 您还可以使用即时模式立即完成开始的研究。")
                 .OnClick(_researchCheatProvider.UnlockCurrentResearch);
             unlockCurrentResearchButton.AppendTo(thirdRowContainer, unlockCurrentResearchButton.GetOptimalSize(), ContainerPosition.MiddleOrCenter);
 
-            var unlockAllResearchButton = Builder.NewBtn("button")
+            var unlockAllResearchButton = Builder.NewBtnGeneral("button")
                 .SetButtonStyle(Style.Global.PrimaryBtn)
                 .SetText(new LocStrFormatted("解锁所有研究"))
                 .AddToolTip("解锁所有研究，包括需要发现才能研究的研究。")
@@ -154,7 +155,7 @@ namespace CaptainOfCheats.Cheats.General
                 .SetItemSpacing(10f)
                 .PutToLeftOf(otherPanel, 0.0f, Offset.Left(10f));
             
-            var addUnityButton = Builder.NewBtn("button")
+            var addUnityButton = Builder.NewBtnGeneral("button")
                 .SetButtonStyle(Style.Global.PrimaryBtn)
                 .SetText(new LocStrFormatted("增加 25 Unity"))
                 .AddToolTip("将 25 Unity 添加到您当前的供应中，它不会超过您的最大 Unity 上限。")
@@ -163,7 +164,6 @@ namespace CaptainOfCheats.Cheats.General
             
             RefreshValues();
         }
-
 
         private SwitchBtn NewToggleSwitch(string text, string tooltip, Action<bool> onToggleAction, Func<bool> isToggleEnabled)
         {

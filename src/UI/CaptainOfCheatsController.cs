@@ -25,11 +25,12 @@ namespace CaptainOfCheats.UI
 
         public override void RegisterUi(UiBuilder builder)
         {
-            _toolbarController.AddMainMenuButton("Captain Of Cheats(中文)", this, IconsPaths.ToolbarCaptainWheel, 1337f, _ => KeyBindings.FromKey(KbCategory.Tools, KeyCode.F8));
+            _toolbarController.AddMainMenuButton("Captain Of Cheats", this, IconsPaths.ToolbarCaptainWheel, 1337f, _ => KeyBindings.FromKey(KbCategory.Tools, KeyCode.F8));
             base.RegisterUi(builder);
         }
 
         public bool IsVisible => true;
+        public bool DeactivateShortcutsIfNotVisible => false;
         public event Action<IToolbarItemInputController> VisibilityChanged;
     }
 }

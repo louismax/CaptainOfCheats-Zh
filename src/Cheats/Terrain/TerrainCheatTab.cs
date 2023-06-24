@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Linq.Expressions;
 using Mafi;
 using Mafi.Base;
 using Mafi.Collections;
@@ -13,6 +12,7 @@ using Mafi.Unity.InputControl;
 using Mafi.Unity.UiFramework;
 using Mafi.Unity.UiFramework.Components;
 using Mafi.Unity.UiFramework.Components.Tabs;
+using Mafi.Unity.UserInterface.Components;
 using UnityEngine;
 using Assets = Mafi.Unity.Assets;
 
@@ -23,9 +23,9 @@ namespace CaptainOfCheats.Cheats.Terrain
     {
         private readonly ProtosDb _protosDb;
         private readonly TerrainCheatProvider _cheatProvider;
-        private bool _disableTerrainPhysicsOnMiningAndDumping = true;
         private readonly Dict<SwitchBtn, Func<bool>> _switchBtns = new Dict<SwitchBtn, Func<bool>>();
         private readonly IOrderedEnumerable<LooseProductProto> _looseProductProtos;
+        private bool _disableTerrainPhysicsOnMiningAndDumping = false;
         private ProductProto.ID? _selectedLooseProductProto;
         private bool _ignoreMineTowerDesignations = true;
 
@@ -52,6 +52,7 @@ namespace CaptainOfCheats.Cheats.Terrain
             terrainPhysicsToggleSwitch.PutToRightOf(terrainSelector, terrainPhysicsToggleSwitch.GetWidth(), Offset.Right(-200f));
             var towerDesignationsToggleSwitch = CreateTerrainIgnoreMineTowerDesignationsToggleSwitch();
             towerDesignationsToggleSwitch.PutToRightOf(terrainPhysicsToggleSwitch, towerDesignationsToggleSwitch.GetWidth(), Offset.Right(-250f));
+
 
             var instantTerrainActions = Builder.NewPanel("instantTerrainActions").SetBackground(Builder.Style.Panel.ItemOverlay);
             instantTerrainActions.AppendTo(tabContainer, size: 50f, Offset.All(0));
@@ -90,15 +91,20 @@ namespace CaptainOfCheats.Cheats.Terrain
             var buildRefillGroundCrudeButton = BuildRefillGroundCrudeButton();
             buildRefillGroundCrudeButton.AppendTo(otherTerrainButtonContainer, buildRefillGroundCrudeButton.GetOptimalSize(), ContainerPosition.MiddleOrCenter);
 
+            var buildAddTreesButton = BuildAddsTreesButton();
+            buildAddTreesButton.AppendTo(otherTerrainButtonContainer, buildAddTreesButton.GetOptimalSize(), ContainerPosition.MiddleOrCenter);
+            
             var buildRemoveTreesButton = BuildRemoveTreesButton();
             buildRemoveTreesButton.AppendTo(otherTerrainButtonContainer, buildRemoveTreesButton.GetOptimalSize(), ContainerPosition.MiddleOrCenter);
+
+
         }
 
         private Dropdwn BuildTerrainSelector(StackContainer topOf)
         {
             var productDropdown = Builder
                 .NewDropdown("TerrainDumpSelector")
-                .AddOptions(_looseProductProtos.Select( x => TerrainResourcesToChineseStr(x.Id.ToString().Replace("Product_", ""))).ToList())
+                .AddOptions(_looseProductProtos.Select(x => TerrainResourcesToChineseStr(x.Id.ToString().Replace("Product_", ""))).ToList())
                 .OnValueChange(i => _selectedLooseProductProto = (ProductProto.ID)_looseProductProtos.ElementAt(i)?.Id);
 
             _selectedLooseProductProto = _looseProductProtos.ElementAt(0)?.Id;
@@ -116,14 +122,24 @@ namespace CaptainOfCheats.Cheats.Terrain
                     return "堆肥";
                 case "CopperOre":
                     return "铜矿";
+                case "CopperOreCrushed":
+                    return "粉碎铜矿石";
                 case "Dirt":
                     return "泥土";
                 case "GoldOre":
                     return "金矿";
+                case "GoldOreCrushed":
+                    return "粉碎金矿石";
                 case "Gravel":
                     return "砾石";
                 case "IronOre":
                     return "铁矿";
+                case "IronOreCrushed":
+                    return "粉碎铁矿石";
+                case "Quartz":
+                    return "石英";
+                case "QuartzCrushed":
+                    return "石英碎";
                 case "Limestone":
                     return "石灰石";
                 case "Rock":
@@ -136,23 +152,11 @@ namespace CaptainOfCheats.Cheats.Terrain
                     return "粉碎矿渣";
                 case "Waste":
                     return "垃圾";
+                case "UraniumDepleted":
+                    return "贫铀";
                 default:
                     return str;
-            }  
-        }
-
-        private SwitchBtn CreateTerrainPhysicsToggleSwitch()
-        {
-            var toggleBtn = Builder.NewSwitchBtn()
-                .SetText("禁用地形物理")
-                .AddTooltip(
-                    "当立即完成采矿或倾倒指定时，此切换将指示游戏物理引擎是否会影响修改后的地形。 启用后，您所做的任何地形修改都会出现非常锐利的边缘。 注意：在非物理地形附近采矿/倾倒的车辆可能会导致非物理地形开始响应物理。")
-                .SetOnToggleAction((toggleVal) => _disableTerrainPhysicsOnMiningAndDumping = toggleVal);
-
-
-            _switchBtns.Add(toggleBtn, () => _disableTerrainPhysicsOnMiningAndDumping);
-
-            return toggleBtn;
+            }
         }
 
         private SwitchBtn CreateTerrainIgnoreMineTowerDesignationsToggleSwitch()
@@ -163,6 +167,20 @@ namespace CaptainOfCheats.Cheats.Terrain
                 .SetOnToggleAction((toggleVal) => _ignoreMineTowerDesignations = toggleVal);
 
             _switchBtns.Add(toggleBtn, () => _ignoreMineTowerDesignations);
+
+            return toggleBtn;
+        }
+        
+        private SwitchBtn CreateTerrainPhysicsToggleSwitch()
+        {
+            var toggleBtn = Builder.NewSwitchBtn()
+                .SetText("禁用地形物理")
+                .AddTooltip(
+                    "当立即完成采矿或倾倒指定时，此切换将指示游戏物理引擎是否会影响修改后的地形。 启用后，您所做的任何地形修改都会出现非常锐利的边缘。 注意：在非物理地形附近采矿/倾倒的车辆可能会导致非物理地形开始响应物理。")
+                .SetOnToggleAction((toggleVal) => _disableTerrainPhysicsOnMiningAndDumping = toggleVal);
+
+
+            _switchBtns.Add(toggleBtn, () => _disableTerrainPhysicsOnMiningAndDumping);
 
             return toggleBtn;
         }
@@ -181,43 +199,44 @@ namespace CaptainOfCheats.Cheats.Terrain
 
         private Btn BuildMineButton()
         {
-            var btn = Builder.NewBtn("button")
+            var btn = Builder.NewBtnPrimary("button")
                 .SetButtonStyle(Style.Global.PrimaryBtn)
                 .SetText(new LocStrFormatted("立即完成挖掘"))
                 .AddToolTip(
                     "目前指定用于采矿的所有区域都将立即完成采矿挖掘作业,玩家无法获得任何资源! 警告：如果启用了地形物理，请注意大型采矿挖掘作业可能需要一段时间才能完成。")
-                .OnClick(() => _cheatProvider.CompleteAllMiningDesignations(_disableTerrainPhysicsOnMiningAndDumping, _ignoreMineTowerDesignations));
+                .OnClick(() => _cheatProvider.CompleteAllMiningDesignations(_ignoreMineTowerDesignations, _disableTerrainPhysicsOnMiningAndDumping));
 
             return btn;
         }
 
         private Btn BuildDumpButton()
         {
-            var btn = Builder.NewBtn("button")
+            var btn = Builder.NewBtnPrimary("button")
                 .SetButtonStyle(Style.Global.PrimaryBtn)
                 .SetText(new LocStrFormatted("立即完成倾倒"))
                 .AddToolTip(
                     "目前指定用于倾倒的所有区域都将立即完成倾倒作业。 不需要玩家提供资源(使用更改地形下拉列表中所选的地形资源)。 如果启用地形物理，您创建的形状将在材质生成后被地形物理改变。")
-                .OnClick(() => _cheatProvider.CompleteAllDumpingDesignations((ProductProto.ID)_selectedLooseProductProto, _disableTerrainPhysicsOnMiningAndDumping, _ignoreMineTowerDesignations));
+                .OnClick(() => _cheatProvider.CompleteAllDumpingDesignationsWithProduct((ProductProto.ID)_selectedLooseProductProto, _disableTerrainPhysicsOnMiningAndDumping, _ignoreMineTowerDesignations));
 
             return btn;
         }
         
         private Btn BuildChangeTerrainButton()
         {
-            var btn = Builder.NewBtn("button")
-                .SetButtonStyle(Style.Global.PrimaryBtn)
-                .SetText(new LocStrFormatted("改变地形"))
-                .AddToolTip(
-                    "当前指定用于倾倒的所有区域都将用作更改地形下拉列表中所选地形的位置标记。 地形的高度不会改变，只会改变材质。 可用于为农场制作泥土。")
-                .OnClick(() => _cheatProvider.ChangeTerrain((ProductProto.ID)_selectedLooseProductProto, _disableTerrainPhysicsOnMiningAndDumping, _ignoreMineTowerDesignations));
+            var btn = Builder.NewBtnPrimary("button")
+                    .SetButtonStyle(Style.Global.PrimaryBtn)
+                    .SetText(new LocStrFormatted("改变地形"))
+                    .AddToolTip(
+                        "当前指定用于倾倒的所有区域都将用作更改地形下拉列表中所选地形的位置标记。 地形的高度不会改变，只会改变最上面一层材质。 可用于为农场制作泥土。")
+                .OnClick(() => _cheatProvider.ChangeTerrain((ProductProto.ID)_selectedLooseProductProto, _ignoreMineTowerDesignations));
+                
 
             return btn;
         }
 
         private Btn BuildRemoveTreesButton()
         {
-            var btn = Builder.NewBtn("button")
+            var btn = Builder.NewBtnPrimary("button")
                 .SetButtonStyle(Style.Global.DangerBtn)
                 .SetText("移除树木")
                 .AddToolTip("立即移除所有指定由采伐者移除的树木。 玩家不会得到任何资源。")
@@ -225,10 +244,21 @@ namespace CaptainOfCheats.Cheats.Terrain
 
             return btn;
         }
+        
+        private Btn BuildAddsTreesButton()
+        {
+            var btn = Builder.NewBtnPrimary("button")
+                .SetButtonStyle(Style.Global.PrimaryBtn)
+                .SetText("添加树木")
+                .AddToolTip("当前被指定为倾倒垃圾且不在采矿塔控制区域内将被用作植树地点的标记。树木的种植间距适中，树龄为12年（请检查您当地的法律对树木的最低同意年龄的规定）")
+                .OnClick(() => _cheatProvider.AddTreesToDumpingDesignations());
+
+            return btn;
+        }
 
         private Btn BuildRefillGroundWaterButton()
         {
-            var btn = Builder.NewBtn("button")
+            var btn = Builder.NewBtnPrimary("button")
                 .SetButtonStyle(Style.Global.PrimaryBtn)
                 .SetText(new LocStrFormatted("填充地下水"))
                 .AddToolTip("所有地面储备水都将重新充满")
@@ -239,7 +269,7 @@ namespace CaptainOfCheats.Cheats.Terrain
 
         private Btn BuildRefillGroundCrudeButton()
         {
-            var btn = Builder.NewBtn("button")
+            var btn = Builder.NewBtnPrimary("button")
                 .SetButtonStyle(Style.Global.PrimaryBtn)
                 .SetText(new LocStrFormatted("填充地面原油"))
                 .AddToolTip("所有地面原油储备将重新满负荷生产")
@@ -262,7 +292,7 @@ namespace CaptainOfCheats.Cheats.Terrain
 
         private void RefreshValues()
         {
-            foreach (var kvp in _switchBtns) kvp.Key.SetState(kvp.Value());
+            foreach (var kvp in _switchBtns) kvp.Key.SetIsOn(kvp.Value());
         }
     }
 }

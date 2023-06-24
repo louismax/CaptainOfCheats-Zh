@@ -35,7 +35,7 @@ namespace CaptainOfCheats.Cheats.Generate
             _electricityCheatProvider = electricityCheatProvider.Instance;
         }
 
-        public string Name => "生产";
+        public string Name => "发电";
         public string IconPath => Assets.Unity.UserInterface.Toolbar.Power_svg;
 
         protected override void BuildUi()

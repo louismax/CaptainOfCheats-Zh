@@ -5,17 +5,17 @@
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\Louis\.nuget\packages\</NuGetPackageFolders>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\Administrator\.nuget\packages\</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
-    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.4.0</NuGetToolVersion>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.6.0</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <SourceRoot Include="C:\Users\Louis\.nuget\packages\" />
+    <SourceRoot Include="C:\Users\Administrator\.nuget\packages\" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)gitversion.msbuild\5.10.3\build\GitVersion.MsBuild.props" Condition="Exists('$(NuGetPackageRoot)gitversion.msbuild\5.10.3\build\GitVersion.MsBuild.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgGitVersion_MsBuild Condition=" '$(PkgGitVersion_MsBuild)' == '' ">C:\Users\Louis\.nuget\packages\gitversion.msbuild\5.10.3</PkgGitVersion_MsBuild>
+    <PkgGitVersion_MsBuild Condition=" '$(PkgGitVersion_MsBuild)' == '' ">C:\Users\Administrator\.nuget\packages\gitversion.msbuild\5.10.3</PkgGitVersion_MsBuild>
   </PropertyGroup>
 </Project>

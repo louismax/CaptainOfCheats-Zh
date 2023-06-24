@@ -42,7 +42,7 @@ namespace CaptainOfCheats.UI
         protected override void BuildWindowContent()
         {
             Logger.Log.Info("Started building cheat menu");
-            SetTitle(new LocStrFormatted("Captain of Cheats Menu (中文版)"));
+            SetTitle(new LocStrFormatted("Captain of Cheats Menu"));
             var size = new Vector2(680f, 400f);
             SetContentSize(size);
             PositionSelfToCenter();

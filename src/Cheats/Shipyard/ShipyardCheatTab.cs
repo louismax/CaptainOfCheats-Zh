@@ -11,6 +11,7 @@ using Mafi.Unity.InputControl;
 using Mafi.Unity.UiFramework;
 using Mafi.Unity.UiFramework.Components;
 using Mafi.Unity.UiFramework.Components.Tabs;
+using Mafi.Unity.UserInterface.Components;
 using UnityEngine;
 
 namespace CaptainOfCheats.Cheats.Shipyard
@@ -41,7 +42,7 @@ namespace CaptainOfCheats.Cheats.Shipyard
         {
             var tabContainer = CreateStackContainer();
             
-            Builder.AddSectionTitle(tabContainer, new LocStrFormatted("船厂产品储存"), new LocStrFormatted("在造船厂仓库中添加或移除产品。"), Offset.Zero);
+            Builder.AddSectionTitle(tabContainer, new LocStrFormatted("船厂产品储存"), new LocStrFormatted("在造船厂仓库中添加的产品。"), Offset.Zero);
             var sectionTitlesContainer = Builder
                 .NewStackContainer("shipyardContainer")
                 .SetStackingDirection(StackContainer.Direction.LeftToRight)
@@ -49,10 +50,10 @@ namespace CaptainOfCheats.Cheats.Shipyard
                 .SetItemSpacing(10f)
                 .AppendTo(tabContainer, offset: Offset.All(0), size: 30);
 
-            var quantitySectionTitle = Builder.CreateSectionTitle(new LocStrFormatted("数量"), new LocStrFormatted("设置将受您的添加或删除产品操作影响的产品数量。"));
+            var quantitySectionTitle = Builder.CreateSectionTitle(new LocStrFormatted("数量"), new LocStrFormatted("设置将受您的添加产品操作影响的产品数量。"));
             quantitySectionTitle.AppendTo(sectionTitlesContainer,  quantitySectionTitle.GetPreferedWidth(), Mafi.Unity.UiFramework.Offset.Left(10));
             
-            var productSectionTitle = Builder.CreateSectionTitle(new LocStrFormatted("产品"), new LocStrFormatted("选择要从您的造船厂添加/删除的产品。"));
+            var productSectionTitle = Builder.CreateSectionTitle(new LocStrFormatted("产品"), new LocStrFormatted("选择要从您的造船厂添加的产品。"));
             productSectionTitle.AppendTo(sectionTitlesContainer, productSectionTitle.GetPreferedWidth(), Offset.Left(245));
             
             var quantityAndProductContainer = Builder
@@ -118,7 +119,7 @@ namespace CaptainOfCheats.Cheats.Shipyard
 
         private Btn BuildAddProductBtn()
         {
-            var btn = Builder.NewBtn("button")
+            var btn = Builder.NewBtnGeneral("button")
                 .SetButtonStyle(Style.Global.PrimaryBtn)
                 .SetText(new LocStrFormatted("添加产品"))
                 .AddToolTip("将所选数量的产品添加到您的造船厂仓库中。")
@@ -130,7 +131,7 @@ namespace CaptainOfCheats.Cheats.Shipyard
 
         private Btn BuildFinishExplorationButton()
         {
-            var btn = Builder.NewBtn("button")
+            var btn = Builder.NewBtnGeneral("button")
                 .SetButtonStyle(Style.Global.PrimaryBtn)
                 .SetText(new LocStrFormatted("完成探索"))
                 .AddToolTip("设置你的船做一个动作，然后按下这个按钮，他们会立即完成它。")
@@ -141,7 +142,7 @@ namespace CaptainOfCheats.Cheats.Shipyard
 
         private Btn BuildRepairFleetButton()
         {
-            var btn = Builder.NewBtn("button")
+            var btn = Builder.NewBtnGeneral("button")
                 .SetButtonStyle(Style.Global.PrimaryBtn)
                 .SetText(new LocStrFormatted("修理船"))
                 .AddToolTip("将您的主舰修复到完全无损状态。")
@@ -152,7 +153,7 @@ namespace CaptainOfCheats.Cheats.Shipyard
         
         private Btn BuildForceUnloadShipyardShipButton()
         {
-            var btn = Builder.NewBtn("button")
+            var btn = Builder.NewBtnGeneral("button")
                 .SetButtonStyle(Style.Global.PrimaryBtn)
                 .SetText("强制卸载船舶")
                 .AddToolTip("绕过造船厂货物容量检查并强行将您的船卸载到您的造船厂货物中。")
@@ -172,8 +173,7 @@ namespace CaptainOfCheats.Cheats.Shipyard
             return productDropdown;
         }
 
-       // private Dictionary<string, string> productNameChineseStr = new Dictionary<string, string>();
-        //productNameChineseStr.Add("Acid", "酸");
+        // 增加中文翻译
         private string ProductNameToChineseStr(string str)
         {
             switch (str)
@@ -236,6 +236,8 @@ namespace CaptainOfCheats.Cheats.Shipyard
                     return "粉碎铜矿石";
                 case "CopperScrap":
                     return "废铜";
+                case "CopperScrapPressed":
+                    return "废铜废料";
                 case "Corn":
                     return "玉米";
                 case "CornMash":
@@ -368,6 +370,8 @@ namespace CaptainOfCheats.Cheats.Shipyard
                     return "土豆";
                 case "Quartz":
                     return "石英";
+                case "QuartzCrushed":
+                    return "石英碎";
                 case "Recyclables":
                     return "可回收物";
                 case "Rock":
@@ -438,8 +442,46 @@ namespace CaptainOfCheats.Cheats.Shipyard
                     return "小麦";
                 case "Wood":
                     return "木头";
-                case "YellowCake":
+                case "Woodchips":
+                    return "木屑";
+                case "Yellowcake":
                     return "黄饼";
+                case "FissionProduct":
+                    return "裂变产物";
+                case "GoldScrapPressed":
+                    return "压金废料";
+                case "IronScrapPressed":
+                    return "压铁废料";
+                case "ManufacturedSand":
+                    return "机制砂";
+                case "MoxRod":
+                    return "Mox棒";
+                case "SpentMox":
+                    return "用过的Mox";
+                case "Paper":
+                    return "纸";
+                case "Plutonium":
+                    return "钚";
+                case "RecyclablesPressed":
+                    return "压实的可回收物";
+                case "RetiredWaste":
+                    return "可回收的核废料";
+                case "Server":
+                    return "服务器";
+                case "SiliconWafer":
+                    return "硅片";
+                case "TreeSapling":
+                    return "树苗";
+                case "UraniumDepleted":
+                    return "贫铀";
+                case "UraniumEnriched":
+                    return "浓缩铀(4%)";
+                case "UraniumEnriched20":
+                    return "浓缩铀(20%)";
+                case "UraniumReprocessed":
+                    return "再加工铀(1%)";
+                case "WastePressed":
+                    return "压缩的垃圾";
                 default:
                     return str;
             }
